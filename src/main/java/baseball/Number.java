@@ -32,6 +32,7 @@ public class Number {
         return result;
     }
 
+    //입력받은 수 배열로 변환
     public static ArrayList<Integer> splitNumber(int playerNumber) {
         ArrayList<Integer> splitPlayerNumber = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
