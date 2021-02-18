@@ -32,7 +32,5 @@ public class GamePlayer {
             if (referee.judgement(random.getNumber(), player.getNumber()))
                 break;
         }
-
     }
-
 }

@@ -53,5 +53,4 @@ public class Referee {
             return 1;
         return 0;
     }
-
 }
