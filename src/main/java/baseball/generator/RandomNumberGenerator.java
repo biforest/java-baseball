@@ -5,7 +5,7 @@ import utils.RandomUtils;
 
 public class RandomNumberGenerator {
 
-    public void generate(GameNumber seedNumber) {
+    public static void generate(GameNumber seedNumber) {
 
         int newSeed = 0;
         for (int exponent = 0; exponent < 3; exponent++) {

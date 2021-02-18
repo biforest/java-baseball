@@ -11,14 +11,12 @@ import baseball.result.Result;
 import java.util.Scanner;
 
 public class GameManager {
-    private final RandomNumberGenerator generator;
     private final Printer printer;
     private final InputReceiver receiver;
     private GameNumber seedNumber;
     private GameNumber userNumber;
 
     public GameManager(Scanner scanner) {
-        generator = new RandomNumberGenerator();
         printer = new ConsolePrinter();
         receiver = new ConsoleInputReceiver(scanner);
         seedNumber = new GameNumber();
@@ -33,7 +31,7 @@ public class GameManager {
         printer.askStartGame();
         continueGame = receiver.checkContinueGame();
         while(continueGame) {
-            generator.generate(seedNumber);
+            RandomNumberGenerator.generate(seedNumber);
             startGame(result);
             printer.askStartGame();
             continueGame = receiver.checkContinueGame();
