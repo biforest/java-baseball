@@ -21,6 +21,12 @@ public class ConsolePrinter implements Printer {
     }
 
     @Override
+    public void warnInvalidInput() {
+        System.out.println("올바르지 않은 입력입니다.\n" +
+                            "서로 다른 숫자 세 자리를 입력해주세요.");
+    }
+
+    @Override
     public void printResult(Result result) {
         if(result.isNothing()) {
             System.out.println("낫싱");

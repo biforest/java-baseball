@@ -9,5 +9,7 @@ public interface Printer {
 
     void requestUserNumber();
 
+    void warnInvalidInput();
+
     void printResult(Result result);
 }
