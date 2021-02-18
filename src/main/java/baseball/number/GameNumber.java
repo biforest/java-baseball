@@ -24,6 +24,28 @@ public class GameNumber {
 
     public void compare(GameNumber userNumber, Result result) {
 
+        int strikeCount =0, ballCount = 0;
+        boolean[] digits = new boolean[10];
+        String userValue = userNumber.getValue();
+
+        for (int index = 0; index < value.length(); index++) {
+            char userCharAtIndex = userValue.charAt(index);
+            if(userCharAtIndex == value.charAt(index)) {
+                strikeCount++;
+                continue;
+            }
+
+            digits[userCharAtIndex] = true;
+        }
+
+        for (char digit : userValue.toCharArray()) {
+            if (digits[digit]) {
+                ballCount++;
+            }
+        }
+
+        result.setBallCount(ballCount);
+        result.setStrikeCount(strikeCount);
     }
 
     public static boolean validateNumber(int number) {
