@@ -43,14 +43,22 @@ public class GameManager {
     private void startGame(Result result) {
 
         while(result.isThreeStrike()) {
-            receiveUserInput();
+            boolean isValidInput = false;
+            isValidInput = receiveUserInput();
+            if(isValidInput) continue;
             seedNumber.compare(userNumber, result);
             printer.printResult(result);
         }
     }
 
-    private void receiveUserInput() {
-        printer.requestUserNumber();
-        receiver.receiveUserNumber(userNumber);
+    private boolean receiveUserInput() {
+        try {
+            printer.requestUserNumber();
+            receiver.receiveUserNumber(userNumber);
+        } catch (IllegalArgumentException e) {
+            printer.warnInvalidInput();
+            return false;
+        }
+        return true;
     }
 }

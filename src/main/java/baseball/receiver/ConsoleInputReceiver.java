@@ -30,7 +30,7 @@ public class ConsoleInputReceiver implements InputReceiver {
     }
 
     @Override
-    public void receiveUserNumber(GameNumber userNumber) {
+    public void receiveUserNumber(GameNumber userNumber) throws  IllegalArgumentException {
         int number = receiveInputByIntAndClean();
         if(!GameNumber.validateNumber(number))
             throw new IllegalArgumentException();
