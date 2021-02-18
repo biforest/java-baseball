@@ -6,6 +6,8 @@ import utils.RandomUtils;
 public class RandomNumberGenerator {
 
     public static void generate(GameNumber seedNumber) {
+        if(seedNumber == null)
+            throw new NullPointerException();
 
         int newSeed = 0;
         for (int exponent = 0; exponent < 3; exponent++) {

@@ -31,6 +31,9 @@ public class ConsoleInputReceiver implements InputReceiver {
 
     @Override
     public void receiveUserNumber(GameNumber userNumber) throws  IllegalArgumentException {
+        if(userNumber == null)
+            throw new NullPointerException();
+
         int number = receiveInputByIntAndClean();
         if(!GameNumber.validateNumber(number))
             throw new IllegalArgumentException();

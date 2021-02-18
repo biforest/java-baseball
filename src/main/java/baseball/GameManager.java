@@ -13,10 +13,13 @@ import java.util.Scanner;
 public class GameManager {
     private final Printer printer;
     private final InputReceiver receiver;
-    private GameNumber seedNumber;
-    private GameNumber userNumber;
+    private final GameNumber seedNumber;
+    private final GameNumber userNumber;
 
     public GameManager(Scanner scanner) {
+        if(scanner == null)
+            throw new NullPointerException();
+
         printer = new ConsolePrinter();
         receiver = new ConsoleInputReceiver(scanner);
         seedNumber = new GameNumber();
@@ -42,8 +45,10 @@ public class GameManager {
 
         while(result.isThreeStrike()) {
             boolean isValidInput = false;
+
             isValidInput = receiveUserInput();
-            if(isValidInput) continue;
+            if(!isValidInput) continue;
+
             seedNumber.compare(userNumber, result);
             printer.printResult(result);
         }
