@@ -1,10 +1,9 @@
 package baseball;
 
 import baseball.generator.RandomNumberGenerator;
-import baseball.inputer.InnerGameInputer;
-import baseball.inputer.OuterGameInputer;
-import baseball.number.SeedNumber;
-import baseball.number.UserNumber;
+import baseball.receiver.ConsoleInputReceiver;
+import baseball.receiver.InputReceiver;
+import baseball.number.GameNumber;
 import baseball.printer.ConsolePrinter;
 import baseball.printer.Printer;
 import baseball.result.Result;
@@ -14,18 +13,16 @@ import java.util.Scanner;
 public class GameManager {
     private final RandomNumberGenerator generator;
     private final Printer printer;
-    private InnerGameInputer innerGameInputer;
-    private OuterGameInputer outerGameInputer;
-    private SeedNumber seedNumber;
-    private UserNumber userNumber;
+    private final InputReceiver receiver;
+    private GameNumber seedNumber;
+    private GameNumber userNumber;
 
     public GameManager(Scanner scanner) {
         generator = new RandomNumberGenerator();
         printer = new ConsolePrinter();
-        innerGameInputer = new InnerGameInputer(scanner);
-        outerGameInputer = new OuterGameInputer(scanner);
-        seedNumber = new SeedNumber();
-        userNumber = new UserNumber();
+        receiver = new ConsoleInputReceiver(scanner);
+        seedNumber = new GameNumber();
+        userNumber = new GameNumber();
     }
 
     public void run() {
@@ -34,22 +31,26 @@ public class GameManager {
 
         printer.greet();
         printer.askStartGame();
-        continueGame = outerGameInputer.checkContinueGame();
+        continueGame = receiver.checkContinueGame();
         while(continueGame) {
             generator.generate(seedNumber);
             startGame(result);
             printer.askStartGame();
-            continueGame = outerGameInputer.checkContinueGame();
+            continueGame = receiver.checkContinueGame();
         }
     }
 
     private void startGame(Result result) {
 
         while(result.isThreeStrike()) {
-            printer.requestUserNumber();
-            innerGameInputer.getUserNumber(userNumber);
+            receiveUserInput();
             seedNumber.compare(userNumber, result);
             printer.printResult(result);
         }
+    }
+
+    private void receiveUserInput() {
+        printer.requestUserNumber();
+        receiver.receiveUserNumber(userNumber);
     }
 }
