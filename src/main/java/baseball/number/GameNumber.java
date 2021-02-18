@@ -29,17 +29,19 @@ public class GameNumber {
         String userValue = userNumber.getValue();
 
         for (int index = 0; index < value.length(); index++) {
-            char userCharAtIndex = userValue.charAt(index);
-            if(userCharAtIndex == value.charAt(index)) {
+            char seedCharAtIndex = value.charAt(index);
+            if(userValue.charAt(index) == seedCharAtIndex) {
                 strikeCount++;
                 continue;
             }
 
-            digits[userCharAtIndex] = true;
+            int seedCharIndex = Integer.parseInt(String.valueOf(seedCharAtIndex));
+            digits[seedCharIndex] = true;
         }
 
         for (char digit : userValue.toCharArray()) {
-            if (digits[digit]) {
+            int digitIndex = Integer.parseInt(String.valueOf(digit));
+            if (digits[digitIndex]) {
                 ballCount++;
             }
         }
