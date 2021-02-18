@@ -10,7 +10,6 @@ public class GamePlayer {
     public static void play(Scanner Input){
         Number random = new Number();
         Number player = new Number();
-
         Integer temp;
 
         //랜덤 수 생성
