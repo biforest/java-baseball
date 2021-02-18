@@ -65,6 +65,7 @@ public class GameNumber {
         for (char digit : strNumber.toCharArray()) {
 
             int integerDigit = Integer.parseInt(String.valueOf(digit));
+            if (integerDigit == 0) return false;
             if (!digits[integerDigit]) {
                 digits[integerDigit] = true;
                 continue;
