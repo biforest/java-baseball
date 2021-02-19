@@ -17,7 +17,7 @@ public class ConsolePrinter implements Printer {
 
     @Override
     public void requestUserNumber() {
-        System.out.println("숫자를 입렧해주세요 : ");
+        System.out.print("숫자를 입렧해주세요 : ");
     }
 
     @Override
@@ -38,5 +38,11 @@ public class ConsolePrinter implements Printer {
 
         if(result.getStrikeCount() != 0)
             System.out.print(result.getStrikeCount() + "스트라이크");
+        System.out.println();
+    }
+
+    @Override
+    public void noticeWin() {
+        System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
     }
 }

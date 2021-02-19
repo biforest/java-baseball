@@ -12,4 +12,6 @@ public interface Printer {
     void warnInvalidInput();
 
     void printResult(Result result);
+
+    void noticeWin();
 }

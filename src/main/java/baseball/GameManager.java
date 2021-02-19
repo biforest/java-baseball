@@ -37,6 +37,8 @@ public class GameManager {
         while(continueGame) {
             RandomNumberGenerator.generate(seedNumber);
             startGame(result);
+
+            printer.noticeWin();
             printer.askStartGame();
             continueGame = receiver.checkContinueGame();
         }
