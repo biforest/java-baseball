@@ -44,7 +44,7 @@ public class GameManager {
 
     private void startGame(Result result) {
 
-        while(result.isThreeStrike()) {
+        while(!result.isThreeStrike()) {
             boolean isValidInput = false;
 
             isValidInput = receiveUserInput();
