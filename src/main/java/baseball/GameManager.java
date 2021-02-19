@@ -62,6 +62,7 @@ public class GameManager {
             printer.requestUserNumber();
             receiver.receiveUserNumber(userNumber);
         } catch (IllegalArgumentException | InputMismatchException e) {
+            receiver.dealWithExceptionalInput();
             printer.warnInvalidInput();
             return false;
         }

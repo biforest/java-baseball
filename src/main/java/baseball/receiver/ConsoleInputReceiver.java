@@ -44,6 +44,10 @@ public class ConsoleInputReceiver implements InputReceiver {
         userNumber.setValue(Integer.toString(number));
     }
 
+    @Override
+    public void dealWithExceptionalInput() {
+        cleanScannerBuffer();
+    }
 
     private void cleanScannerBuffer() {
         if(scanner.hasNextLine())
