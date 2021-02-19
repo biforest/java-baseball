@@ -2,6 +2,7 @@ package baseball.receiver;
 
 import baseball.number.GameNumber;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleInputReceiver implements InputReceiver {
@@ -24,13 +25,17 @@ public class ConsoleInputReceiver implements InputReceiver {
             cleanScannerBuffer();
             System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             return checkContinueGame();
+        } catch (InputMismatchException e) {
+            cleanScannerBuffer();
+            System.out.println("잘못된 입력입니다. 숫자만 입력해주세요.");
+            return checkContinueGame();
         }
 
         return select == START_GAME;
     }
 
     @Override
-    public void receiveUserNumber(GameNumber userNumber) throws  IllegalArgumentException {
+    public void receiveUserNumber(GameNumber userNumber) throws  IllegalArgumentException, InputMismatchException {
         if(userNumber == null)
             throw new NullPointerException();
 

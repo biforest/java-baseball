@@ -8,6 +8,7 @@ import baseball.printer.ConsolePrinter;
 import baseball.printer.Printer;
 import baseball.result.Result;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameManager {
@@ -58,7 +59,7 @@ public class GameManager {
         try {
             printer.requestUserNumber();
             receiver.receiveUserNumber(userNumber);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | InputMismatchException e) {
             printer.warnInvalidInput();
             return false;
         }
