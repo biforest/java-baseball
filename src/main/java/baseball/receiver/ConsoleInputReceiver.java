@@ -19,10 +19,9 @@ public class ConsoleInputReceiver implements InputReceiver {
         int select = 0;
 
         try {
-            select = receiveInputByIntAndClean();
+            select = scanner.nextInt();
             throwIfInputIsNotOneOrTwo(select);
         } catch (IllegalArgumentException exception) {
-            cleanScannerBuffer();
             System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             return checkContinueGame();
         } catch (InputMismatchException e) {
@@ -39,20 +38,15 @@ public class ConsoleInputReceiver implements InputReceiver {
         if(userNumber == null)
             throw new NullPointerException();
 
-        int number = receiveInputByIntAndClean();
+        int number = scanner.nextInt();
         if(!GameNumber.validateNumber(number))
             throw new IllegalArgumentException();
         userNumber.setValue(Integer.toString(number));
     }
 
-    private int receiveInputByIntAndClean() {
-        int input = scanner.nextInt();
-        cleanScannerBuffer();
-        return input;
-    }
 
     private void cleanScannerBuffer() {
-        if(scanner.hasNext())
+        if(scanner.hasNextLine())
             scanner.nextLine();
     }
 
