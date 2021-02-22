@@ -6,7 +6,7 @@ public interface InputReceiver {
 
     boolean checkContinueGame();
 
-    void receiveUserNumber(GameNumber userNumber);
+    GameNumber receiveUserNumber();
 
     void dealWithExceptionalInput();
 }

@@ -3,7 +3,6 @@ package baseball.receiver;
 import baseball.number.GameNumber;
 
 import java.util.InputMismatchException;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class ConsoleInputReceiver implements InputReceiver {
@@ -35,16 +34,12 @@ public class ConsoleInputReceiver implements InputReceiver {
     }
 
     @Override
-    public void receiveUserNumber(GameNumber userNumber) throws  IllegalArgumentException, InputMismatchException {
-        if (userNumber == null) {
-            throw new NullPointerException();
-        }
-
+    public GameNumber receiveUserNumber() throws  IllegalArgumentException, InputMismatchException {
         int number = scanner.nextInt();
         if (!GameNumber.validateNumber(number)) {
             throw new IllegalArgumentException();
         }
-        userNumber.setValue(Integer.toString(number));
+        return GameNumber.from(Integer.toString(number));
     }
 
     @Override

@@ -14,8 +14,8 @@ import java.util.Scanner;
 public class GameManager {
     private final Printer printer;
     private final InputReceiver receiver;
-    private final GameNumber seedNumber;
-    private final GameNumber userNumber;
+    private GameNumber seedNumber;
+    private GameNumber userNumber;
 
     public GameManager(Scanner scanner) {
         if(scanner == null) {
@@ -24,19 +24,18 @@ public class GameManager {
 
         printer = new ConsolePrinter();
         receiver = new ConsoleInputReceiver(scanner);
-        seedNumber = new GameNumber();
-        userNumber = new GameNumber();
     }
 
     public void run() {
         Result result = new Result();
         boolean continueGame;
+
         printer.greet();
         printer.askStartGame();
         continueGame = receiver.checkContinueGame();
 
         while (continueGame) {
-            RandomNumberGenerator.generate(seedNumber);
+            seedNumber = RandomNumberGenerator.generate();
             startGame(result);
             printer.noticeWin();
             printer.askStartGame();
@@ -46,8 +45,8 @@ public class GameManager {
 
     private void startGame(Result result) {
         while (!result.isThreeStrike()) {
-            boolean isValidInput;
-            isValidInput = receiveUserInput();
+            boolean isValidInput = receiveUserInput();
+
             if (!isValidInput) {
                 continue;
             }
@@ -59,7 +58,7 @@ public class GameManager {
     private boolean receiveUserInput() {
         try {
             printer.requestUserNumber();
-            receiver.receiveUserNumber(userNumber);
+            userNumber = receiver.receiveUserNumber();
         } catch (IllegalArgumentException | InputMismatchException e) {
             receiver.dealWithExceptionalInput();
             printer.warnInvalidInput();
