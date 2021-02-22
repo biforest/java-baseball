@@ -33,7 +33,7 @@ class GameNumberTest {
 
         for (int testCase = 0; testCase < TEST_CASE_NUM; testCase++) {
             //when
-            seedNumbers[testCase].compare(userNumbers[testCase], results[testCase]);
+            results[testCase].calculateResult(seedNumbers[testCase], userNumbers[testCase]);
             //then
             assertEquals(results[testCase].getBallCount(), 0);
             assertEquals(results[testCase].getStrikeCount(), 0);
@@ -66,7 +66,7 @@ class GameNumberTest {
 
         for (int testCase = 0; testCase < TEST_CASE_NUM; testCase++) {
             //when
-            seedNumbers[testCase].compare(userNumbers[testCase], results[testCase]);
+            results[testCase].calculateResult(seedNumbers[testCase], userNumbers[testCase]);
             //then
             assertEquals(results[testCase].getBallCount(), 0);
             assertEquals(results[testCase].getStrikeCount(), 1);
@@ -99,7 +99,7 @@ class GameNumberTest {
 
         for (int testCase = 0; testCase < TEST_CASE_NUM; testCase++) {
             //when
-            seedNumbers[testCase].compare(userNumbers[testCase], results[testCase]);
+            results[testCase].calculateResult(seedNumbers[testCase], userNumbers[testCase]);
             //then
             assertEquals(results[testCase].getBallCount(), 1);
             assertEquals(results[testCase].getStrikeCount(), 1);
@@ -132,7 +132,7 @@ class GameNumberTest {
 
         for (int testCase = 0; testCase < TEST_CASE_NUM; testCase++) {
             //when
-            seedNumbers[testCase].compare(userNumbers[testCase], results[testCase]);
+            results[testCase].calculateResult(seedNumbers[testCase], userNumbers[testCase]);
             //then
             assertEquals(results[testCase].getBallCount(), 2);
             assertEquals(results[testCase].getStrikeCount(), 1);
@@ -165,7 +165,7 @@ class GameNumberTest {
 
         for (int testCase = 0; testCase < TEST_CASE_NUM; testCase++) {
             //when
-            seedNumbers[testCase].compare(userNumbers[testCase], results[testCase]);
+            results[testCase].calculateResult(seedNumbers[testCase], userNumbers[testCase]);
             //then
             assertEquals(results[testCase].getBallCount(), 0);
             assertEquals(results[testCase].getStrikeCount(), 2);
@@ -198,7 +198,7 @@ class GameNumberTest {
 
         for (int testCase = 0; testCase < TEST_CASE_NUM; testCase++) {
             //when
-            seedNumbers[testCase].compare(userNumbers[testCase], results[testCase]);
+            results[testCase].calculateResult(seedNumbers[testCase], userNumbers[testCase]);
             //then
             assertEquals(results[testCase].getBallCount(), 0);
             assertEquals(results[testCase].getStrikeCount(), 3);
@@ -243,12 +243,12 @@ class GameNumberTest {
         int input1 = 564;
         int input2 = 679;
         int input3 = 541;
-        int input4 = 908;
+        int input4 = 918;
         int input5 = 543;
 
         //when, then
-        assertTrue(GameNumber.validateNumber(input2));
         assertTrue(GameNumber.validateNumber(input1));
+        assertTrue(GameNumber.validateNumber(input2));
         assertTrue(GameNumber.validateNumber(input3));
         assertTrue(GameNumber.validateNumber(input4));
         assertTrue(GameNumber.validateNumber(input5));

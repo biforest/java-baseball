@@ -1,5 +1,7 @@
 package baseball.result;
 
+import baseball.number.GameNumber;
+
 public class Result {
     private int strikeCount;
     private int ballCount;
@@ -7,9 +9,31 @@ public class Result {
         this.strikeCount = 0;
         this.ballCount = 0;
     }
-    public Result(int strikeCount, int ballCount) {
+
+    public void calculateResult(GameNumber seedNumber, GameNumber userNumber) {
+        calculateStrikeCount(seedNumber, userNumber);
+        calculateBallCount(seedNumber, userNumber);
+    }
+
+    private void calculateStrikeCount(GameNumber seedNumber, GameNumber userNumber) {
+        int strikeCount =0;
+        String seedValue = seedNumber.getValue();
+        String userValue = userNumber.getValue();
+
+        for (int index = 0; index < seedValue.length(); index++) {
+            if (userValue.charAt(index) == seedValue.charAt(index)) {
+                strikeCount++;
+            }
+        }
         this.strikeCount = strikeCount;
-        this.ballCount = ballCount;
+    }
+
+    private void calculateBallCount(GameNumber seedNumber, GameNumber userNumber) {
+        String seedValue = seedNumber.getValue();
+        String userValue = userNumber.getValue();
+        int ballCount = (int) seedValue.codePoints().mapToObj(digit -> (char)digit)
+                            .filter(digit -> userValue.indexOf(digit) != -1).count();
+        this.ballCount = ballCount - strikeCount;
     }
 
     public boolean isWin() {
@@ -24,15 +48,7 @@ public class Result {
         return strikeCount;
     }
 
-    public void setStrikeCount(int strikeCount) {
-        this.strikeCount = strikeCount;
-    }
-
     public int getBallCount() {
         return ballCount;
-    }
-
-    public void setBallCount(int ballCount) {
-        this.ballCount = ballCount;
     }
 }

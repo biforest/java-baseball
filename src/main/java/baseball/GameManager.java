@@ -66,7 +66,7 @@ public class GameManager {
             if (!isValidInput) {
                 continue;
             }
-            seedNumber.compare(userNumber, result);
+            result.calculateResult(seedNumber, userNumber);
             printer.printResult(result);
         }
     }
