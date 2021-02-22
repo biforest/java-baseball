@@ -28,12 +28,12 @@ public class ConsoleInputReceiver implements InputReceiver {
     }
 
     @Override
-    public GameNumber receiveUserNumber() throws  IllegalArgumentException, InputMismatchException {
+    public String receiveUserNumber() throws  IllegalArgumentException, InputMismatchException {
         int number = scanner.nextInt();
         if (!GameNumber.validateNumber(number)) {
             throw new IllegalArgumentException();
         }
-        return GameNumber.from(Integer.toString(number));
+        return Integer.toString(number);
     }
 
     @Override

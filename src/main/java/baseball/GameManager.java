@@ -74,7 +74,8 @@ public class GameManager {
     private boolean receiveUserInput() {
         try {
             printer.requestUserNumber();
-            userNumber = receiver.receiveUserNumber();
+            String userInput = receiver.receiveUserNumber();
+            userNumber = GameNumber.from(userInput);
         } catch (IllegalArgumentException | InputMismatchException e) {
             receiver.dealWithExceptionalInput();
             printer.warnInvalidInput();
