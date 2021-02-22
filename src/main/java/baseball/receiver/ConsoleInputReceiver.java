@@ -3,12 +3,13 @@ package baseball.receiver;
 import baseball.number.GameNumber;
 
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class ConsoleInputReceiver implements InputReceiver {
+    private final int START_GAME = 1;
 
     private final Scanner scanner;
-    private final int START_GAME = 1;
 
     public ConsoleInputReceiver(Scanner scanner) {
         this.scanner = scanner;
