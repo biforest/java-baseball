@@ -17,18 +17,18 @@ public class GameNumber {
         value = "";
     }
     public GameNumber(String number) {
-        if(!validateNumber(Integer.parseInt(number))) {
+        if (!validateNumber(Integer.parseInt(number))) {
             throw new IllegalArgumentException();
         }
         this.value = number;
     }
 
     public void compare(GameNumber userNumber, Result result) {
-        if(userNumber == null) {
+        if (userNumber == null) {
             throw new NullPointerException();
         }
 
-        if(result == null) {
+        if (result == null) {
             throw new NullPointerException();
         }
         int strikeCount =0, ballCount = 0;
@@ -37,7 +37,7 @@ public class GameNumber {
 
         for (int index = 0; index < value.length(); index++) {
             char seedCharAtIndex = value.charAt(index);
-            if(userValue.charAt(index) == seedCharAtIndex) {
+            if (userValue.charAt(index) == seedCharAtIndex) {
                 strikeCount++;
                 continue;
             }
@@ -58,7 +58,7 @@ public class GameNumber {
     }
 
     public static boolean validateNumber(int number) {
-        if(number <= 122 || number >=988) {
+        if (number <= 122 || number >=988) {
             return false;
         }
 

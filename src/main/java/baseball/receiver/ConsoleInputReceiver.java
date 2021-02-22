@@ -35,12 +35,12 @@ public class ConsoleInputReceiver implements InputReceiver {
 
     @Override
     public void receiveUserNumber(GameNumber userNumber) throws  IllegalArgumentException, InputMismatchException {
-        if(userNumber == null) {
+        if (userNumber == null) {
             throw new NullPointerException();
         }
 
         int number = scanner.nextInt();
-        if(!GameNumber.validateNumber(number)) {
+        if (!GameNumber.validateNumber(number)) {
             throw new IllegalArgumentException();
         }
         userNumber.setValue(Integer.toString(number));
@@ -52,7 +52,7 @@ public class ConsoleInputReceiver implements InputReceiver {
     }
 
     private void cleanScannerBuffer() {
-        if(scanner.hasNextLine()) {
+        if (scanner.hasNextLine()) {
             scanner.nextLine();
         }
     }

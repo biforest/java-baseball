@@ -35,7 +35,7 @@ public class GameManager {
         printer.greet();
         printer.askStartGame();
         continueGame = receiver.checkContinueGame();
-        while(continueGame) {
+        while (continueGame) {
             RandomNumberGenerator.generate(seedNumber);
             startGame(result);
 
@@ -47,11 +47,11 @@ public class GameManager {
 
     private void startGame(Result result) {
 
-        while(!result.isThreeStrike()) {
+        while (!result.isThreeStrike()) {
             boolean isValidInput = false;
 
             isValidInput = receiveUserInput();
-            if(!isValidInput) {
+            if (!isValidInput) {
                 continue;
             }
 

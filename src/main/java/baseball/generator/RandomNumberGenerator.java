@@ -6,7 +6,7 @@ import utils.RandomUtils;
 public class RandomNumberGenerator {
 
     public static void generate(GameNumber seedNumber) {
-        if(seedNumber == null) {
+        if (seedNumber == null) {
             throw new NullPointerException();
         }
 
@@ -16,7 +16,7 @@ public class RandomNumberGenerator {
             newSeed += (Math.pow(10.0, exponent) * randomDigit);
         }
 
-        if(!GameNumber.validateNumber(newSeed)){
+        if (!GameNumber.validateNumber(newSeed)){
             generate(seedNumber);
             return ;
         }
