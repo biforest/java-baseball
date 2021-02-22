@@ -12,7 +12,7 @@ public class Result {
         this.ballCount = ballCount;
     }
 
-    public boolean isThreeStrike() {
+    public boolean isWin() {
         return strikeCount == 3;
     }
 

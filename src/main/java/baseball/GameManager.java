@@ -62,7 +62,7 @@ public class GameManager {
     }
 
     private void startGame(Result result) {
-        while (!result.isThreeStrike()) {
+        while (!result.isWin()) {
             boolean isValidInput = receiveUserInput();
 
             if (!isValidInput) {
