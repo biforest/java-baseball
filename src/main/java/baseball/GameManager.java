@@ -29,14 +29,13 @@ public class GameManager {
     }
 
     public void run() {
-        Result result = new Result();
-
         printer.greet();
         printer.askStartGame();
 
         boolean continueGame = isContinueGame();
 
         while (continueGame) {
+            Result result = new Result();
             seedNumber = RandomNumberGenerator.generate();
             startGame(result);
             printer.noticeWin();
