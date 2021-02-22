@@ -16,13 +16,6 @@ public class GameNumber {
     }
 
     public void compare(GameNumber userNumber, Result result) {
-        if (userNumber == null) {
-            throw new NullPointerException();
-        }
-
-        if (result == null) {
-            throw new NullPointerException();
-        }
         int strikeCount =0, ballCount = 0;
         boolean[] digits = new boolean[10];
         String userValue = userNumber.getValue();

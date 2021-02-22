@@ -9,6 +9,7 @@ import baseball.printer.Printer;
 import baseball.result.Result;
 
 import java.util.InputMismatchException;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class GameManager {
@@ -20,10 +21,7 @@ public class GameManager {
     private GameNumber userNumber;
 
     public GameManager(Scanner scanner) {
-        if(scanner == null) {
-            throw new NullPointerException();
-        }
-
+        Objects.requireNonNull(scanner);
         printer = new ConsolePrinter();
         receiver = new ConsoleInputReceiver(scanner);
     }
