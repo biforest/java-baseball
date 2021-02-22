@@ -4,7 +4,7 @@ import baseball.number.GameNumber;
 
 public interface InputReceiver {
 
-    boolean checkContinueGame();
+    int receiveContinueGameSelect();
 
     GameNumber receiveUserNumber();
 

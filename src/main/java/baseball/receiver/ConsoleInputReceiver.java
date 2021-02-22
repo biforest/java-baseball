@@ -6,7 +6,6 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleInputReceiver implements InputReceiver {
-    private final int START_GAME = 1;
 
     private final Scanner scanner;
 
@@ -15,22 +14,17 @@ public class ConsoleInputReceiver implements InputReceiver {
     }
 
     @Override
-    public boolean checkContinueGame() {
-        int select = 0;
-
+    public int receiveContinueGameSelect() {
+        int select;
         try {
             select = scanner.nextInt();
-            throwIfInputIsNotOneOrTwo(select);
-        } catch (IllegalArgumentException exception) {
-            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
-            return checkContinueGame();
         } catch (InputMismatchException e) {
             cleanScannerBuffer();
             System.out.println("잘못된 입력입니다. 숫자만 입력해주세요.");
-            return checkContinueGame();
+            return receiveContinueGameSelect();
         }
 
-        return select == START_GAME;
+        return select;
     }
 
     @Override
@@ -50,12 +44,6 @@ public class ConsoleInputReceiver implements InputReceiver {
     private void cleanScannerBuffer() {
         if (scanner.hasNextLine()) {
             scanner.nextLine();
-        }
-    }
-
-    private void throwIfInputIsNotOneOrTwo(int select) {
-        if(select != 1 && select != 2) {
-            throw new IllegalArgumentException();
         }
     }
 }

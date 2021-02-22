@@ -12,6 +12,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class GameManager {
+    private final int START_GAME = 1;
+
     private final Printer printer;
     private final InputReceiver receiver;
     private GameNumber seedNumber;
@@ -28,18 +30,35 @@ public class GameManager {
 
     public void run() {
         Result result = new Result();
-        boolean continueGame;
 
         printer.greet();
         printer.askStartGame();
-        continueGame = receiver.checkContinueGame();
+
+        boolean continueGame = isContinueGame();
 
         while (continueGame) {
             seedNumber = RandomNumberGenerator.generate();
             startGame(result);
             printer.noticeWin();
             printer.askStartGame();
-            continueGame = receiver.checkContinueGame();
+            continueGame = isContinueGame();
+        }
+    }
+
+    private boolean isContinueGame() {
+        int select = receiver.receiveContinueGameSelect();
+        try {
+            throwIfInputIsNotOneOrTwo(select);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return isContinueGame();
+        }
+        return (select == START_GAME);
+    }
+
+    private void throwIfInputIsNotOneOrTwo(int select) {
+        if (select != 1 && select != 2) {
+            throw new IllegalArgumentException("올바르지 않은 입력입니다.\n시작은 1, 종료는 2 입니다.");
         }
     }
 
