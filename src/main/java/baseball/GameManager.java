@@ -29,7 +29,7 @@ public class GameManager {
 
     public void run() {
         Result result = new Result();
-        boolean continueGame = true;
+        boolean continueGame;
 
         printer.greet();
         printer.askStartGame();
