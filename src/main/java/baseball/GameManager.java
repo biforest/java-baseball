@@ -18,8 +18,9 @@ public class GameManager {
     private final GameNumber userNumber;
 
     public GameManager(Scanner scanner) {
-        if(scanner == null)
+        if(scanner == null) {
             throw new NullPointerException();
+        }
 
         printer = new ConsolePrinter();
         receiver = new ConsoleInputReceiver(scanner);
@@ -50,7 +51,9 @@ public class GameManager {
             boolean isValidInput = false;
 
             isValidInput = receiveUserInput();
-            if(!isValidInput) continue;
+            if(!isValidInput) {
+                continue;
+            }
 
             seedNumber.compare(userNumber, result);
             printer.printResult(result);

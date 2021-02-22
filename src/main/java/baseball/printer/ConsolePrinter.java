@@ -33,11 +33,13 @@ public class ConsolePrinter implements Printer {
             return ;
         }
         
-        if(result.getBallCount() != 0)
+        if(result.getBallCount() != 0) {
             System.out.print(result.getBallCount() + "볼 ");
+        }
 
-        if(result.getStrikeCount() != 0)
+        if(result.getStrikeCount() != 0) {
             System.out.print(result.getStrikeCount() + "스트라이크");
+        }
         System.out.println();
     }
 
