@@ -31,14 +31,13 @@ public class GameManager {
     public void run() {
         Result result = new Result();
         boolean continueGame;
-
         printer.greet();
         printer.askStartGame();
         continueGame = receiver.checkContinueGame();
+
         while (continueGame) {
             RandomNumberGenerator.generate(seedNumber);
             startGame(result);
-
             printer.noticeWin();
             printer.askStartGame();
             continueGame = receiver.checkContinueGame();
@@ -46,15 +45,12 @@ public class GameManager {
     }
 
     private void startGame(Result result) {
-
         while (!result.isThreeStrike()) {
-            boolean isValidInput = false;
-
+            boolean isValidInput;
             isValidInput = receiveUserInput();
             if (!isValidInput) {
                 continue;
             }
-
             seedNumber.compare(userNumber, result);
             printer.printResult(result);
         }
