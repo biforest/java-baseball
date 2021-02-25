@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class GameManager {
-    private final int START_GAME = 1;
+    private static final int START_GAME = 1;
 
     private final Printer printer;
     private final InputReceiver receiver;
