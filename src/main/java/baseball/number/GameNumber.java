@@ -2,6 +2,7 @@ package baseball.number;
 
 public class GameNumber {
     private String value;
+    
     private GameNumber(String number) {
         value = number;
     }
