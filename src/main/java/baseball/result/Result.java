@@ -17,7 +17,7 @@ public class Result {
     }
 
     private void calculateStrikeCount(GameNumber seedNumber, GameNumber userNumber) {
-        int strikeCount =0;
+        int strikeCount = 0;
         String seedValue = seedNumber.getValue();
         String userValue = userNumber.getValue();
 
