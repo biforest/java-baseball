@@ -32,8 +32,10 @@ public class Result {
     private void calculateBallCount(GameNumber seedNumber, GameNumber userNumber) {
         String seedValue = seedNumber.getValue();
         String userValue = userNumber.getValue();
-        int ballCount = (int) seedValue.codePoints().mapToObj(digit -> (char)digit)
-                            .filter(digit -> userValue.indexOf(digit) != -1).count();
+        int ballCount = (int) seedValue.codePoints()
+                .mapToObj(digit -> (char) digit)
+                .filter(digit -> userValue.indexOf(digit) != -1)
+                .count();
         this.ballCount = ballCount - strikeCount;
     }
 
