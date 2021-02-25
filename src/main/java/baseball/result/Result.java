@@ -5,6 +5,7 @@ import baseball.number.GameNumber;
 public class Result {
     private int strikeCount;
     private int ballCount;
+    
     public Result() {
         this.strikeCount = 0;
         this.ballCount = 0;
