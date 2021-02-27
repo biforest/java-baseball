@@ -21,7 +21,7 @@ public class Result {
         String seedValue = seedNumber.getValue();
         String userValue = userNumber.getValue();
 
-        for (int index = 0; index < seedValue.length(); index++) {
+        for (int i = 0; i < seedValue.length(); i++) {
             if (userValue.charAt(index) == seedValue.charAt(index)) {
                 strikeCount++;
             }
